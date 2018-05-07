@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<hazelcast xsi:schemaLocation="http://www.hazelcast.com/schema/config hazelcast-config-3.7.xsd"
+           xmlns="http://www.hazelcast.com/schema/config"
+           xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <group>
+        <name>test</name>
+        <password>test-pass</password>
+    </group>
+    
+    <network>
+        <port auto-increment="false" port-count="100">6701</port>
+        <outbound-ports>
+            <!--
+            Allowed port range when connecting to other nodes.
+            0 or * means use system provided port.
+            -->
+            <ports>0</ports>
+        </outbound-ports>
+        <join>
+            <multicast enabled="false"/>
+            <tcp-ip enabled="true">
+                <member-list>
+                    <member>10.100.19.182:5701,10.100.19.182:6701</member>
+                </member-list>
+            </tcp-ip>
+        </join>
+    </network>
+
+</hazelcast>
